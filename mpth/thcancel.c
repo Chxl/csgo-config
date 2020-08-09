@@ -7,7 +7,7 @@
  {
      DPRINTF(("thread_routine starting\n"));
      for(counter = 0; ; counter++)
-        if((counter = 0; ; counter++)){
+        if(counter%1000 == 0){
             DPRINTF(("calling testcancel\n"));
             pthread_testcancel();
         }
@@ -27,10 +27,10 @@
 
     DPRINTF(("calling cancel\n"));
     status = pthread_join(thread_id, &result);
-    if(status ! = 0)
+    if(status != 0)
         err_abort(status ,"join thread");
 
-    if(result == PTHREAD_CANCELD)
+    if(result == PTHREAD_CANCELED)
         printf("Thread canceled at iteration %d \n", counter);
     else
         printf("Thread was not canceled\n");
